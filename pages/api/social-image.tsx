@@ -152,10 +152,10 @@ export default withOGImage<'query', 'id'>({
 })
 
 const style = `
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
 
 @font-face {
-  font-family: 'sans-serif';
+  font-family: 'Noto Sans KR', sans-serif;
   font-style:  normal;
   font-weight: normal;
 }

@@ -12,7 +12,7 @@ import { PageBlock } from 'notion-types'
 
 import { notion } from 'lib/notion-api'
 import { mapImageUrl } from 'lib/map-image-url'
-import { interRegular } from 'lib/fonts'
+// import { interRegular } from 'lib/fonts'
 import * as config from 'lib/config'
 
 /**
@@ -152,11 +152,12 @@ export default withOGImage<'query', 'id'>({
 })
 
 const style = `
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap');
+
 @font-face {
-  font-family: 'Inter';
+  font-family: 'sans-serif';
   font-style:  normal;
   font-weight: normal;
-  src: url(data:font/woff2;charset=utf-8;base64,${interRegular}) format('woff2');
 }
 
 :root {

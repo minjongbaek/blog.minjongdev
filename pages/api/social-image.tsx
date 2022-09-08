@@ -169,7 +169,7 @@ const style = `
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   padding: 0;
   margin: 0;
 }

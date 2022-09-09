@@ -1,27 +1,38 @@
 import { ExtendedRecordMap } from 'notion-types'
-import {
-  parsePageId,
-  getCanonicalPageId as getCanonicalPageIdImpl
-} from 'notion-utils'
-
-import { inversePageUrlOverrides } from './config'
+import { uuidToId, getBlockTitle } from 'notion-utils'
 
 export function getCanonicalPageId(
   pageId: string,
   recordMap: ExtendedRecordMap,
   { uuid = true }: { uuid?: boolean } = {}
 ): string | null {
-  const cleanPageId = parsePageId(pageId, { uuid: false })
-  if (!cleanPageId) {
-    return null
+  if (!pageId || !recordMap) return null
+
+  const id = uuidToId(pageId)
+  const block = recordMap.block[pageId]?.value
+
+  if (block) {
+    const title = normalizeTitle(getBlockTitle(block, recordMap))
+
+    if (title) {
+      if (uuid) {
+        return `${title}-${id}`
+      } else {
+        return title
+      }
+    }
   }
 
-  const override = inversePageUrlOverrides[cleanPageId]
-  if (override) {
-    return override
-  } else {
-    return getCanonicalPageIdImpl(pageId, recordMap, {
-      uuid
-    })
-  }
+  return id
+}
+
+export const normalizeTitle = (title: string | null): string => {
+  return (
+    (title || '')
+      .replace(/ /g, '-')
+      .replace(/--/g, '-')
+      .replace(/-$/, '')
+      .replace(/^-/, '')
+      .trim()
+  )
 }

@@ -14,7 +14,7 @@ import TweetEmbed from 'react-tweet-embed'
 import { NotionRenderer } from 'react-notion-x'
 
 // utils
-import { getBlockTitle, getPageProperty, formatDate } from 'notion-utils'
+import { getBlockTitle, getPageProperty } from 'notion-utils'
 import { mapPageUrl, getCanonicalPageUrl } from 'lib/map-page-url'
 import { mapImageUrl } from 'lib/map-image-url'
 import { searchNotion } from 'lib/search-notion'
@@ -111,25 +111,28 @@ const propertyLastEditedTimeValue = (
   defaultFn: () => React.ReactNode
 ) => {
   if (pageHeader && block?.last_edited_time) {
-    return `Last updated ${formatDate(block?.last_edited_time, {
-      month: 'long'
-    })}`
+    return `Last updated ${block?.last_edited_time}`
+    // return `Last updated ${formatDate(block?.last_edited_time, {
+    //   month: 'long'
+    // })}`
   }
 
   return defaultFn()
 }
 
 const propertyDateValue = (
-  { data, schema, pageHeader },
+  { data, schema },
   defaultFn: () => React.ReactNode
 ) => {
-  if (pageHeader && schema?.name?.toLowerCase() === 'published') {
+  if (schema?.name?.toLowerCase() === 'published') {
     const publishDate = data?.[0]?.[1]?.[0]?.[1]?.start_date
 
     if (publishDate) {
-      return `Published ${formatDate(publishDate, {
-        month: 'long'
-      })}`
+      const date = new Date(publishDate)
+      return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
+      // return `Published ${formatDate(publishDate, {
+      //   month: 'long'
+      // })}`
     }
   }
 

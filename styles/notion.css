@@ -191,6 +191,9 @@
 .notion-page-cover-wrapper img {
   max-width: 1200px !important;
   border-radius: 24px;
+  height: 35vh !important;
+  min-height: 35vh !important;
+  max-height: 35vh !important;
 }
 
 .notion-page-cover-wrapper {

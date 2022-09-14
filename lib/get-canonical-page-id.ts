@@ -33,6 +33,7 @@ export const normalizeTitle = (title: string | null): string => {
       .replace(/--/g, '-')
       .replace(/-$/, '')
       .replace(/^-/, '')
+      .replace(/\?/g, '')
       .trim()
   )
 }

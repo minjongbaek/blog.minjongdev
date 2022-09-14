@@ -129,7 +129,7 @@ const propertyDateValue = (
 
     if (publishDate) {
       const date = new Date(publishDate)
-      return `${date.getFullYear()}-${date.getMonth() / 10 < 1 ? '0' + date.getMonth() : date.getMonth() }-${date.getDate() / 10 < 1 ? '0' + date.getDate() : date.getDate()}`
+      return date.toLocaleDateString('ko-KR');
       // return `Published ${formatDate(publishDate, {
       //   month: 'long'
       // })}`

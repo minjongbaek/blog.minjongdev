@@ -12,7 +12,7 @@ export function getCanonicalPageId(
   const block = recordMap.block[pageId]?.value
 
   if (block) {
-    const title = normalizeTitle(getBlockTitle(block, recordMap))
+    const title = encodeURIComponent(normalizeTitle(getBlockTitle(block, recordMap)))
 
     if (title) {
       if (uuid) {

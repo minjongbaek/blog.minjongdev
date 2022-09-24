@@ -12,7 +12,7 @@ export function getCanonicalPageId(
   const block = recordMap.block[pageId]?.value
 
   if (block) {
-    const title = encodeURIComponent(normalizeTitle(getBlockTitle(block, recordMap)))
+    const title = normalizeTitle(getBlockTitle(block, recordMap))
 
     if (title) {
       if (uuid) {
@@ -33,6 +33,7 @@ export const normalizeTitle = (title: string | null): string => {
       .replace(/--/g, '-')
       .replace(/-$/, '')
       .replace(/^-/, '')
+      .replace(/\?/, '')
       .trim()
   )
 }

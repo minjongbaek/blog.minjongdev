@@ -8,7 +8,7 @@ import {
   isUrl,
   parsePageId
 } from 'notion-utils'
-import { PageBlock } from 'notion-types'
+// import { PageBlock } from 'notion-types'
 
 import { notion } from 'lib/notion-api'
 import { mapImageUrl } from 'lib/map-image-url'
@@ -46,19 +46,19 @@ export default withOGImage<'query', 'id'>({
       // const isBlogPost =
       //   block.type === 'page' && block.parent_table === 'collection'
       const title = getBlockTitle(block, recordMap) || config.name
-      const image = mapImageUrl(
-        getPageProperty<string>('Social Image', block, recordMap) ||
-          (block as PageBlock).format?.page_cover ||
-          config.defaultPageCover,
-        block
-      )
+      // const image = mapImageUrl(
+      //   getPageProperty<string>('Social Image', block, recordMap) ||
+      //     (block as PageBlock).format?.page_cover ||
+      //     config.defaultPageCover,
+      //   block
+      // )
 
-      const imageCoverPosition =
-        (block as PageBlock).format?.page_cover_position ??
-        config.defaultPageCoverPosition
-      const imageObjectPosition = imageCoverPosition
-        ? `center ${(1 - imageCoverPosition) * 100}%`
-        : null
+      // const imageCoverPosition =
+      //   (block as PageBlock).format?.page_cover_position ??
+      //   config.defaultPageCoverPosition
+      // const imageObjectPosition = imageCoverPosition
+      //   ? `center ${(1 - imageCoverPosition) * 100}%`
+      //   : null
 
       const blockIcon = getBlockIcon(block, recordMap)
       const authorImage = mapImageUrl(
@@ -129,7 +129,7 @@ export default withOGImage<'query', 'id'>({
                   </div>
                 </div>
 
-                {image && (
+                {/* {image && (
                   <img
                     src={image}
                     className='rhs'
@@ -137,7 +137,7 @@ export default withOGImage<'query', 'id'>({
                       objectPosition: imageObjectPosition || undefined
                     }}
                   />
-                )}
+                )} */}
               </div>
             </div>
           </body>

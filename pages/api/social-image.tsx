@@ -154,13 +154,6 @@ export default withOGImage<'query', 'id'>({
 })
 
 const style = `
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
-
-@font-face {
-  font-family: 'Noto Sans KR', sans-serif;
-  font-style:  normal;
-  font-weight: normal;
-}
 
 :root {
   --padding: 8vmin;
